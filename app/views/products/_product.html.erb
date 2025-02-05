@@ -1,20 +1,12 @@
-<div id="<%= dom_id product %>">
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Name:</strong>
-    <%= product.name %>
-  </p>
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Description:</strong>
-    <%= product.description %>
-  </p>
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Images:</strong>
-    <% product.images.each do |image| %>
-      <div><%= link_to image.filename, image %></div>
+<%= link_to product do %> 
+  <div id="<%= dom_id product %>">
+    <% if product.images.attached? %>
+      <%= image_tag product.images.first, class: "w-50 h-70 object-cover rounded-lg hover:brightness-75 transition-all duration-250" %>
+    <% else %>
+      <%= image_tag "placeholder.jpg", class: "w-50 h-70 object-cover rounded-lg", alt: "No Image" %> <%# Alt text para acessibilidade %>
+      <p class="text-sm text-gray-500 mt-2">Imagem não disponível</p> <%# Mensagem opcional %>
     <% end %>
-  </p>
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Price:</strong>
-    <%= product.price %>
-  </p>
-</div>
+    <p class="text-lg text-blue-900 font-bold"><%= product.name %></p>
+    <p class="text-lg"><%= number_to_currency product.price %></p>
+  </div>
+<% end %>
