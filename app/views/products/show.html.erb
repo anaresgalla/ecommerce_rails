@@ -3,14 +3,37 @@
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
   <% end %>
 
-    <%= render @product %>
-
-    <% if current_admin %>
-      <div class="w-full flex justify-center items-center mt-8 gap-4">
-        <%= link_to "Edit this product", edit_product_path(@product), class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-        <%= link_to "Back to products", products_path, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-        <%= button_to "Destroy this product", @product, method: :delete, class: "rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
-      </div>
-    <% end %>
+  <div class="max-w-7xl w-full mx-auto px-10 mb-2"> 
+    <%= link_to "Products", products_path, class: "text-xl text-blue-800 hover:text-blue-200" %>
+    <%= link_to "> #{@product.name}", @product, class: "text-xl text-blue-600" %>
   </div>
+  
+  <div class="grid md:grid-cols-2">
+    <div class="max-w-md w-full mx-auto"> 
+      <% if @product.images.any? %>
+        <%= image_tag @product.images.first, class: "w-auto h-auto object-cover mx-auto" %>
+        <div class="grid grid-cols-3 gap-4 mt-4"> 
+          <% @product.images[1..].each do |image| %>
+            <%= image_tag image, class: "w-full h-32 object-cover" %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+    <div class="max-w-xl flex flex-col gap-4"> 
+      <h1 class="text-4xl font-bold text-indigo-900"> <%= @product.name %> </h1>
+      <div class="text-gray-700 mr-20"> 
+        <%= @product.description %>
+      </div>
+      <span class="bg-green-500 p-2 rounded-lg text-green-50 mr-auto"> <%= number_to_currency @product.price %> </span>
+      
+    </div>
+  </div>
+
+  <% if current_admin %>
+    <div class="w-full flex justify-center items-center mt-16 mb-16 gap-4">
+      <%= link_to "Edit this product", edit_product_path(@product), class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+      <%= link_to "Back to products", products_path, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+      <%= button_to "Destroy this product", @product, method: :delete, class: "rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+    </div>
+  <% end %>
 </div>
