@@ -1,10 +1,10 @@
 <%= link_to product do %> 
-  <div id="<%= dom_id product %>">
+  <div id="<%= dom_id product %>" class="w-50 mx-auto mt-5">
     <% if product.images.attached? %>
       <%= image_tag product.images.first, class: "w-50 h-70 object-cover rounded-lg hover:brightness-75 transition-all duration-250" %>
     <% else %>
-      <%= image_tag "placeholder.jpg", class: "w-50 h-70 object-cover rounded-lg", alt: "No Image" %> <%# Alt text para acessibilidade %>
-      <p class="text-sm text-gray-500 mt-2">Imagem não disponível</p> <%# Mensagem opcional %>
+      <%= image_tag "placeholder.jpg", class: "w-50 h-70 object-cover rounded-lg", alt: "No Image" %> 
+      <p class="text-sm text-gray-500 mt-2">Imagem não disponível</p> 
     <% end %>
     <p class="text-lg text-blue-900 font-bold"><%= product.name %></p>
     <p class="text-lg"><%= number_to_currency product.price %></p>
