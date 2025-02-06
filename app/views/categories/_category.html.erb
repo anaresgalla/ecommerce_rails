@@ -1,14 +1,11 @@
-<div id="<%= dom_id category %>">
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Name:</strong>
-    <%= category.name %>
-  </p>
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Description:</strong>
-    <%= category.description %>
-  </p>
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Image:</strong>
-    <%= link_to category.image.filename, category.image if category.image.attached? %>
-  </p>
-</div>
+<%= link_to category do %> 
+  <div id="<%= dom_id category %>" class="relative flex flex-col items-center">
+    <% if category.image.attached? %>
+      <%= image_tag category.image, class: "w-30 h-30 object-cover rounded-lg hover:brightness-60 bg-white transition-all duration-250" %>
+    <% else %>
+      <%= image_tag "placeholder.jpg", class: "w-50 h-70 object-cover rounded-lg", alt: "No Image" %> 
+      <p class="text-sm text-gray-500 mt-2">Imagem não disponível</p> 
+    <% end %>
+    <p class="text-lg text-blue-900 font-bold mt-2"><%= category.name %></p>
+  </div>
+<% end %>
