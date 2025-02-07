@@ -7,7 +7,7 @@
 
   <h1 class="custom-heading">Categories</h1>
 
-  <div id="categories" class="min-w-full grid grid-cols-4 gap-8">
+  <div id="categories" class="min-w-full grid md:grid-cols-4 gap-8">
     <% if @categories.any? %>
       <% @categories.each do |category| %>
         <%= render category %>

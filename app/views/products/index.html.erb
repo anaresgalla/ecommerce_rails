@@ -8,7 +8,10 @@
   
   <h1 class="custom-heading">The Best Books</h1>
   
-  <div id="products" class="min-w-full grid grid-cols-4 gap-8">
+
+  <%= link_to "Shop by Category", categories_path, class: "ml-10 rounded-lg h-64 w-full border border-gray-700 border-2 bg-gray-200 text-2xl text-blue-800 font-semibold p-2 hover:bg-gray-50" %>
+
+  <div id="products" class="mt-8 min-w-full grid md:grid-cols-4 gap-8">
     <% if @products.any? %>
       <% @products.each do |product| %>
         <%= render product %>

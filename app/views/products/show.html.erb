@@ -5,6 +5,7 @@
 
   <div class="max-w-7xl w-full mx-auto px-10 mb-2"> 
     <%= link_to "Products", products_path, class: "text-xl text-blue-800 hover:text-blue-200" %>
+    <%= link_to "> #{@product.category.name}", @product.category, class: "text-xl text-blue-800 hover:text-blue-200" %>
     <%= link_to "> #{@product.name}", @product, class: "text-xl text-blue-600" %>
   </div>
   
