@@ -13,25 +13,42 @@
 
   <div class="my-5">
     <%= form.label :name %>
-    <%= form.text_field :name, class: ["block shadow-sm rounded-md border outline-hidden px-3 py-2 mt-2 w-full bg-gray-200", {"border-gray-600 focus:outline-blue-600": product.errors[:name].none?, "border-red-400 focus:outline-red-600": product.errors[:name].any?}] %>
+    <%= form.text_field :name, class: ["block shadow-sm rounded-md border outline-hidden px-3 py-2 mt-2 w-full bg-gray-200", 
+                                        {"border-gray-600 focus:outline-blue-600": product.errors[:name].none?, 
+                                        "border-red-400 focus:outline-red-600": product.errors[:name].any?}] %>
   </div>
 
   <div class="my-5">
+  <%= form.label :category_id, "Category" %>
+  <%= form.select :category_id, options_from_collection_for_select(Category.all, 'id', 'name', product.category_id), { include_blank: true }, 
+    class: ["block shadow-sm rounded-md border outline-hidden px-3 py-2 mt-2 bg-gray-200 w-auto", 
+            {"border-gray-600 focus:outline-blue-600": product.errors[:category].none?, 
+             "border-red-400 focus:outline-red-600": product.errors[:category].any?}] %>
+  </div>
+
+
+  <div class="my-5">
     <%= form.label :description %>
-    <%= form.rich_textarea :description, class: ["block shadow-sm rounded-md border outline-hidden px-3 py-2 mt-2 w-full bg-gray-200", {"border-gray-600 focus:outline-blue-600": product.errors[:description].none?, "border-red-400 focus:outline-red-600": product.errors[:description].any?}] %>
+    <%= form.rich_textarea :description, class: ["block shadow-sm rounded-md border outline-hidden px-3 py-2 mt-2 w-full bg-gray-200", 
+                                                  {"border-gray-600 focus:outline-blue-600": product.errors[:description].none?, 
+                                                  "border-red-400 focus:outline-red-600": product.errors[:description].any?}] %>
   </div>
 
   <div class="my-5">
     <%= form.label :images %>
-    <%= form.file_field :images, multiple: true, class: ["block shadow-sm rounded-md border outline-hidden px-3 py-2 mt-2 w-full bg-gray-200", {"border-gray-600 focus:outline-blue-600": product.errors[:password].none?, "border-red-400 focus:outline-red-600": product.errors[:password].any?}] %>
+    <%= form.file_field :images, multiple: true, class: ["block shadow rounded-md border border-gray-400 
+                                                          outline-none px-3 py-2 mt-2 w-auto text-white bg-blue-500"] %>
   </div>
 
   <div class="my-5">
     <%= form.label :price %>
-    <%= form.text_field :price, class: ["block shadow-sm rounded-md border outline-hidden px-3 py-2 mt-2 w-full bg-gray-200", {"border-gray-600 focus:outline-blue-600": product.errors[:price].none?, "border-red-400 focus:outline-red-600": product.errors[:price].any?}] %>
+    <%= form.text_field :price, class: ["block shadow-sm rounded-md border outline-hidden px-3 py-2 mt-2 w-auto bg-gray-200", 
+                                        {"border-gray-600 focus:outline-blue-600": product.errors[:price].none?, 
+                                        "border-red-400 focus:outline-red-600": product.errors[:price].any?}] %>
   </div>
 
   <div class="inline">
-    <%= form.submit class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white inline-block font-medium cursor-pointer" %>
+    <%= form.submit class: ["rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 
+                            text-white inline-block font-medium cursor-pointer"] %>
   </div>
 <% end %>
