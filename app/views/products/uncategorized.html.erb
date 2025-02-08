@@ -1,0 +1,27 @@
+<% content_for :title, "Uncategorized Products" %>
+
+<div class="w-full">
+  <h1 class="text-2xl font-bold mb-4">Uncategorized Products</h1>
+
+  <% if @products.any? %>
+    <div class="grid md:grid-cols-4 gap-8">
+      <% @products.each do |product| %>
+        <div class="p-4 rounded-lg shadow hover:shadow-lg">
+          <% if product.images.any? %>
+            <%= image_tag product.images.first, class: "w-50 h-50 object-cover mx-auto rounded-lg" %>
+          <% else %>
+            <div class="w-full h-48 flex items-center justify-center bg-gray-100 text-gray-500 rounded-lg">
+              No Image Available
+            </div>
+          <% end %>
+
+          <h2 class="text-lg font-semibold mt-4 text-blue-800">
+            <%= link_to product.name, product_path(product) %>
+          </h2>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <p class="text-center my-10">No products without a category.</p>
+  <% end %>
+</div>

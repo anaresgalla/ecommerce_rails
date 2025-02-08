@@ -5,14 +5,18 @@
 
   <div class="max-w-7xl w-full mx-auto px-10 mb-2"> 
     <%= link_to "Products", products_path, class: "text-xl text-blue-800 hover:text-blue-200" %>
-    <%= link_to "> #{@product.category.name}", @product.category, class: "text-xl text-blue-800 hover:text-blue-200" %>
+    <% if @product.category.present? %>
+      <%= link_to "> #{@product.category.name}", @product.category, class: "text-xl text-blue-800 hover:text-blue-200" %>
+    <% else %>
+      <%= link_to "> Uncategorized", uncategorized_products_path, class: "text-xl text-blue-800 hover:text-blue-200" %>
+     <% end %>
     <%= link_to "> #{@product.name}", @product, class: "text-xl text-blue-600" %>
   </div>
   
   <div class="grid md:grid-cols-2">
-    <div class="max-w-md w-full mx-auto"> 
+    <div class="max-w-md w-full mx-auto shadow rounded-lg p-2"> 
       <% if @product.images.any? %>
-        <%= image_tag @product.images.first, class: "w-auto h-auto object-cover mx-auto" %>
+        <%= image_tag @product.images.first, class: "w-auto h-auto object-cover mx-auto rounded-lg mt-8" %>
         <div class="grid grid-cols-3 gap-4 mt-4"> 
           <% @product.images[1..].each do |image| %>
             <%= image_tag image, class: "w-full h-32 object-cover" %>
@@ -20,7 +24,7 @@
         </div>
       <% end %>
     </div>
-    <div class="max-w-xl flex flex-col gap-4"> 
+    <div class="max-w-xl flex flex-col gap-4 mt-8"> 
       <h1 class="text-4xl font-bold text-indigo-900"> <%= @product.name %> </h1>
       <div class="text-gray-700 mr-20"> 
         <%= @product.description %>

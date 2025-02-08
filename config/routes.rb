@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   resources :categories
   devise_for :admins
-  resources :products
+  resources :products do
+    collection do
+      get "uncategorized", to: "products#uncategorized"
+    end
+  end
   resource :admin, only: [ :show ], controller: :admin
 
   get "up" => "rails/health#show", as: :rails_health_check

@@ -14,7 +14,7 @@
   <div id="products" class="mt-8 min-w-full grid md:grid-cols-4 gap-8">
     <% if @products.any? %>
       <% @products.each do |product| %>
-        <%= render product %>
+        <div class="shadow p-2"> <%= render product %> </div>
       <% end %>
     <% else %>
       <p class="text-center my-10">No products found.</p>
