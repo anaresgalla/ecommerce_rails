@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     collection do
       get "uncategorized", to: "products#uncategorized"
     end
+    resource :buy_now, only: [ :show ], controller: :buy_now # controller adicionado para que não fique automaticamente no plural
   end
   resource :admin, only: [ :show ], controller: :admin
 

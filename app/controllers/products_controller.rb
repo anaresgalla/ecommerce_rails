@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :check_admin_privileges, except: %i[ index show ]
+  before_action :check_admin_privileges, except: %i[ index show uncategorized ]
   before_action :set_product, only: %i[ show edit update destroy ]
 
   # GET /products or /products.json
@@ -68,11 +68,11 @@ class ProductsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product
-      @product = Product.find(params.expect(:id))
+      @product = Product.find(params.require(:id))
     end
 
     # Only allow a list of trusted parameters through.
     def product_params
-      params.expect(product: [ :name, :description, :price, :category_id, images: [] ])
+      params.require(product: [ :name, :description, :price, :category_id, images: [] ])
     end
 end

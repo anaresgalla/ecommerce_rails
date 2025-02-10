@@ -29,8 +29,8 @@
       <div class="text-gray-700 mr-20"> 
         <%= @product.description %>
       </div>
-      <span class="bg-green-500 p-2 rounded-lg text-green-50 mr-auto"> <%= number_to_currency @product.price %> </span>
-      
+      <span class="bg-green-500 p-2 rounded-lg font-semibold text-lg text-green-50 mr-auto"> <%= number_to_currency @product.price %> </span>
+      <%= link_to "Buy Now", product_buy_now_path(@product), class: "rounded-lg p-3 font-semibold text-center text-xl bg-yellow-400 hover:bg-yellow-500 mr-auto" %>
     </div>
   </div>
 
