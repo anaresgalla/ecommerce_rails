@@ -1,1 +1,15 @@
-<h1>congrats! you bought the product!</h1>
+<div class="w-full flex flex-col items-center md:pt-8">
+  <div class="w-full mb-8 flex flex-col items-center">
+    <h2 class="text-4xl font-semibold text-indigo-100 mb-4">Thank you for purchasing!</h2>
+    <p class="text-2xl font-semibold text-indigo-50 mb-4">Your product will be shipped soon.</p>
+    <div class="relative w-48 h-48 mx-auto" style="background-image: url('<%= asset_path('delivery.gif') %>'); background-size: contain; background-repeat: no-repeat; background-position: center;">
+    </div>
+  </div>
+  <h1 class="text-2xl font-bold text-indigo-900 text-center"><%= @product.name %></h1>
+  <div class="max-w-2xl w-full">
+    <%= image_tag(@product.images.first, class: "w-auto h-auto object-cover rounded-lg mx-auto mt-8") if @product.images.any? %>
+    <div class="text-gray-700 text-justify text-lg p-8">
+      <%= @product.description %>
+    </div>
+  </div>
+</div>
