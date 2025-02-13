@@ -20,7 +20,7 @@
     <% end %>
   </div>
 
-  <div id="products" class="min-w-full grid grid-cols-4 gap-8">
+  <div id="products" class="min-w-full grid md:grid-cols-4 gap-8">
     <% if @category.products.any? %>
       <% @category.products.each do |product| %>
         <%= render "products/product", product: product %>
