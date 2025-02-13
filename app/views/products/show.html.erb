@@ -30,7 +30,11 @@
         <%= @product.description %>
       </div>
       <span class="bg-green-500 p-2 rounded-lg font-semibold text-lg text-green-50 mr-auto"> <%= number_to_currency @product.price %> </span>
-      <%= link_to "Buy Now", product_buy_now_path(@product), class: "rounded-lg p-3 font-semibold text-center text-xl bg-yellow-400 hover:bg-yellow-500 mr-auto" %>
+      <div class="flex justify-between gap-8">
+        <%= link_to "Buy Now", product_buy_now_path(@product), class: "rounded-lg p-3 font-semibold text-center text-xl bg-yellow-400 hover:bg-yellow-500 mr-auto w-full" %>
+        <%= link_to "Add to Cart", carts_path(product_id: @product.id), class: "rounded-lg p-3 font-semibold text-center text-xl bg-gray-400 hover:bg-gray-500 mr-auto w-full",
+              data: {turbo_method: 'post'} %>
+      </div>
     </div>
   </div>
 
