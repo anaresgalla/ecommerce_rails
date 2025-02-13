@@ -5,6 +5,15 @@
       <span class="text-2xl text-gray-100"> The Best Books </span>
     <% end %>
 
-    <%= image_tag('carrinho.png')%>
+    <%= link_to cart_path(@current_cart.secret_id) do %>
+      <div class="relative">
+        <%= image_tag('carrinho.png')%>
+        <% if @current_cart && @current_cart.cart_items.any? %>
+          <div class="absolute -top-1 -right-3 bg-red-500 px-1.5 text-sm text-white rounded-lg">
+            <%= @current_cart.cart_items.count%>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </div>

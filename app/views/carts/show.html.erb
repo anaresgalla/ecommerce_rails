@@ -1,0 +1,15 @@
+<div class="w-full flex flex-col items-center">
+  <h1 class="text-5xl font-semibold font-serif text-indigo-900">Your cart</h1>
+  <br>
+  <% if @current_cart.cart_items.any? %>
+    <p class="text-lg">You have <%= @current_cart.cart_items.count %> item(s) in your cart.</p>
+  <% else %>
+    <p class="text-lg">Your cart is empty.</p>
+  <% end %>
+
+  <div id="products" class="min-w-full grid md:grid-cols-4 gap-8">
+    <% @current_cart.products.each do |product| %>
+      <%= render "products/product", product: product%>
+    <% end %>
+  </div>
+</div>

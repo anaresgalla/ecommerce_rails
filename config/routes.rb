@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :carts, only: [ :create ]
+  resources :carts, only: %i[ show create ]
 
   resource :admin, only: [ :show ], controller: :admin
 
