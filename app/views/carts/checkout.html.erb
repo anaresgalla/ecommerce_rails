@@ -1,0 +1,19 @@
+<div class="w-full grid md:grid-cols-2">
+  <div class="w-full flex flex-col items-center md:pt-8">
+    <h1 class="text-5xl font-semibold font-serif text-indigo-900 text-center">Your Cart</h1>
+    <br>
+    <p>You have <%= @current_cart.cart_items.count %> product(s) in your cart.</p>
+    <br>
+    <div class="mx-auto flex flex-col gap-2 items-center">
+      <% @current_cart.products.each do |product| %>
+        <div class="flex gap-2 font-semibold justify-between bg-gray-400/75 p-2 rounded-lg">
+          <p class="text-lg text-indigo-100"> <%= product.name %></p>
+          <p class="text-lg text-green-700"> <%= number_to_currency product.price %></p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div data-controller="stripe-checkout" data-stripe-checkout-url-value="<%= stripe_session_cart_path(@current_cart.secret_id) %>">
+  </div>
+</div>

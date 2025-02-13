@@ -10,7 +10,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :carts, only: %i[ show create ]
+  resources :carts, only: %i[ show create ] do
+    get "checkout", on: :member, to: "carts#checkout" # member to add the specific id to the url (carts/:id/checkout)
+    post "stripe_session", on: :member, to: "carts#stripe_session"
+    get "success", on: :member, to: "carts#success"
+  end
 
   resource :admin, only: [ :show ], controller: :admin
 
