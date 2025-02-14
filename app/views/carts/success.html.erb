@@ -6,7 +6,7 @@
     </div>
   </div>
   <div class="mx-auto flex flex-col gap-2 items-center">
-    <% @current_cart.products.each do |product| %>
+    <% @purchased_cart.products.each do |product| %>
       <div class="flex gap-2 font-semibold justify-between bg-gray-400/75 p-2 rounded-lg">
         <p class="text-lg text-indigo-100"> <%= product.name %></p>
         <p class="text-lg text-green-700"> <%= number_to_currency product.price %></p>

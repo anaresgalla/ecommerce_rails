@@ -34,5 +34,10 @@ class CartsController < ApplicationController
   end
 
   def success
+    if @current_cart.cart_items.any?
+      session[:current_cart_id] = nil
+    end
+    @purchased_cart = Cart.find_by_secret_id(params[:id])
+    redirect_to root_path if !@purchased_cart
   end
 end
