@@ -1,0 +1,8 @@
+<div class="relative" id="cart">
+  <%= image_tag('carrinho.png')%>
+  <% if cart && cart.cart_items.any? %>
+    <div class="absolute -top-1 -right-3 bg-red-500 px-1.5 text-sm text-white rounded-lg">
+      <%= cart.cart_items.count%>
+    </div>
+  <% end %>
+</div>
