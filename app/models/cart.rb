@@ -4,6 +4,8 @@ class Cart < ApplicationRecord
 
   before_create :set_secret_id
 
+  enum :status, [ "pending", "complete" ]
+
   private
 
   def set_secret_id
